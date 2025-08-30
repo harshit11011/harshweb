@@ -1,14 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HarshWeb</title>
-    <link rel="stylesheet" href="/src/style.css" />
-  </head>
-  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <h1 class="text-4xl font-bold text-blue-600">
-      🚀 HarshWeb is running!
-    </h1>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HarshWeb</title>
+  <script type="module" src="/src/main.js"></script>
+  <style>
+    /* Floating button animation */
+    #floatingButton {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background: #1f2937;
+      color: white;
+      padding: 16px 24px;
+      border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    #floatingButton:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: #374151;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Hero animation */
+    .hero-text {
+      transform: translateY(50px);
+      opacity: 0;
+      transition: all 1s ease-out;
+    }
+
+    .hero-text.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Section fade-in */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-out;
+    }
+
+    .fade-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="fixed w-full top-0 left-0 bg-black bg-opacity-90 backdrop-blur-md z-50 flex justify-between items-center p-6">
+    <h1 class="text-2xl font-bold text-white">HarshWeb</h1>
+    <nav>
+      <ul class="flex space-x-6">
+        <li><a href="#home" class="hover:text-gray-300 transition">Home</a></li>
+        <li><a href="#about" class="hover:text-gray-300 transition">About</a></li>
+        <li><a href="#projects" class="hover:text-gray-300 transition">Projects</a></li>
+        <li><a href="#contact" class="hover:text-gray-300 transition">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative flex flex-col items-center justify-center min-h-screen text-center p-12 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden">
+    <!-- Floating shapes / interactive hero -->
+    <canvas id="heroCanvas" class="absolute top-0 left-0 w-full h-full"></canvas>
+
+    <h2 class="text-6xl font-bold mb-4 text-blue-400 hero-text">🚀 HarshWeb website</h2>
+    <p class="text-xl text-gray-300 max-w-xl mb-8 hero-text">Sleek, modern, and interactive website showcasing your photos, videos, thoughts, and work.</p>
+    <button class="bg-gray-700 text-white px-8 py-4 rounded-xl hover:bg-gray-600 hover:scale-105 transition-all duration-300 hero-text">Explore</button>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="p-16 text-center fade-section">
+    <h3 class="text-4xl font-bold mb-6 text-white">About Me</h3>
+    <p class="max-w-3xl mx-auto text-gray-300 text-lg leading-relaxed">
+      This section will contain your story, philosophy, and premium presentation. Elegant and modern, with subtle animations.
+    </p>
+  </section>
+
+  <!-- Projects / Gallery Section -->
+  <!-- Modern Projects Section -->
+  <section id="projects" class="p-16 bg-gray-900 text-white">
+  <h3 class="text-4xl font-bold mb-8 text-white text-center">My Work</h3>
+  <div class="flex overflow-x-scroll gap-8 py-4 snap-x snap-mandatory">
+    <div class="min-w-[300px] snap-start relative group">
+      <img src="https://via.placeholder.com/400x300" class="rounded-xl shadow-lg transition-transform duration-500 group-hover:scale-105"/>
+      <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 p-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+        <h4 class="font-bold text-blue-400">Project 1</h4>
+        <p class="text-gray-300 text-sm">A sleek project with interactive elements.</p>
+      </div>
+    </div>
+    <div class="min-w-[300px] snap-start relative group">
+      <img src="https://via.placeholder.com/400x300" class="rounded-xl shadow-lg transition-transform duration-500 group-hover:scale-105"/>
+      <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 p-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+        <h4 class="font-bold text-blue-400">Project 2</h4>
+        <p class="text-gray-300 text-sm">Interactive, modern, and dynamic content.</p>
+      </div>
+    </div>
+    <div class="min-w-[300px] snap-start relative group">
+      <img src="https://via.placeholder.com/400x300" class="rounded-xl shadow-lg transition-transform duration-500 group-hover:scale-105"/>
+      <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 p-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+        <h4 class="font-bold text-blue-400">Project 3</h4>
+        <p class="text-gray-300 text-sm">Clean modern design with hover animations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="p-16 text-center fade-section">
+    <h3 class="text-4xl font-bold mb-6 text-white">Contact Me</h3>
+    <p class="text-gray-300 mb-6">Reach out via email: <a href="mailto:harshit@example.com" class="text-blue-400 hover:underline">harshit@example.com</a></p>
+    <form class="max-w-lg mx-auto flex flex-col space-y-4">
+      <input type="text" placeholder="Name" class="p-4 rounded-lg bg-gray-800 border border-gray-700 text-white"/>
+      <input type="email" placeholder="Email" class="p-4 rounded-lg bg-gray-800 border border-gray-700 text-white"/>
+      <textarea placeholder="Message" class="p-4 rounded-lg bg-gray-800 border border-gray-700 text-white"></textarea>
+      <button type="submit" class="bg-blue-400 text-gray-900 px-6 py-3 rounded-xl hover:scale-105 transition-transform">Send</button>
+    </form>
+  </section>
+
+  <!-- Floating Button -->
+  <div id="floatingButton" onclick="alert('This will link to contact or any action!')">
+    Contact Me
+  </div>
+
+  <script>
+    // Fade-in on scroll
+    const sections = document.querySelectorAll('.fade-section');
+    const heroTexts = document.querySelectorAll('.hero-text');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, {threshold: 0.2});
+
+    sections.forEach(section => observer.observe(section));
+    heroTexts.forEach(text => observer.observe(text));
+
+    // Floating button opacity on scroll
+    const button = document.getElementById('floatingButton');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 200){
+        button.style.opacity = 1;
+      } else {
+        button.style.opacity = 0.7;
+      }
+    });
+
+    // Interactive hero canvas
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 60;
+
+    for(let i=0;i<particleCount;i++){
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        radius: Math.random()*3+1,
+        dx: (Math.random()-0.5)*1,
+        dy: (Math.random()-0.5)*1
+      });
+    }
+
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p=>{
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if(p.x<0 || p.x>canvas.width) p.dx*=-1;
+        if(p.y<0 || p.y>canvas.height) p.dy*=-1;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+        ctx.fillStyle = 'rgba(59,130,246,0.7)';
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', ()=>{
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
 </html>
